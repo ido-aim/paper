@@ -20,7 +20,12 @@ With K' Pornchanok
 ## 22 FEB WFH
 
 ## 23 FEB Meeting@Ditto Office
-With K' Jeng - K' Pear
+With 
+K' Jeng
+K' Pear
+K' Ou
+K' Oat
+K' Keng
 
 ## 24 FEB WFH
 
