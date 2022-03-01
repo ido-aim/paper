@@ -35,9 +35,7 @@ Meeting Room#2 2nd Floor
 ## 25 FEB WFH
 Groceries@The Jazz 
 
-## 26/27 FEB Groceries
-<span style="color:red">
-*High Fever*</span>
+## 26/27 FEB Groceries [High Fever]
 
 Central East Ville
 Central Lat Phrao
@@ -51,7 +49,7 @@ Bangkok Bank - Siam Paragon
 Crystal Park
 Bangkok Bank - Crystal Park
 
-02 561 1111 # 1304-7
+Vibhavadi : Call center => 02 561 1111 # 1304-7
 
 ![Covid](./covid.png)
 
