@@ -27,6 +27,8 @@ K' Pear
 K' Ou
 K' Oat
 K' Keng
+Meeting Room#2 2nd Floor
+![Meeting](./meeting.jpg)
 
 ## 24 FEB WFH
 
