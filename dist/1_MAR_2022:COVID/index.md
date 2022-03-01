@@ -36,7 +36,8 @@ Meeting Room#2 2nd Floor
 Groceries@The Jazz 
 
 ## 26/27 FEB Groceries
-*High Fever*
+<span style="color:red">
+*High Fever*</span>
 
 Central East Ville
 Central Lat Phrao
