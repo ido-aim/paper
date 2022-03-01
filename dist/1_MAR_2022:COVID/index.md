@@ -16,6 +16,7 @@ Walk in Central World
 With K' Pornchanok
 
 ## 21 FEB Working@Ditto Office
+Working Near It Desk
 
 ## 22 FEB WFH
 
@@ -34,6 +35,7 @@ Groceries@The Jazz
 
 ## 26/27 FEB Groceries
 *High Fever*
+
 Central East Ville
 Central Lat Phrao
 
