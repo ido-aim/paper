@@ -51,9 +51,5 @@ Bangkok Bank - Crystal Park
 
 Vibhavadi : Call center => 02 561 1111 # 1304-7
 
-<object data="./COVID_SAR2022_redact.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="./COVID_SAR2022_redact.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="./COVID_SAR2022_redact.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+<iframe src="https://onedrive.live.com/embed?cid=7F8BEABFE91BC366&resid=7F8BEABFE91BC366%218143&authkey=AOegFMDQHT7adQ8&em=2" width="476" height="288" frameborder="0" scrolling="no"></iframe>
 
