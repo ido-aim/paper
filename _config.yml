@@ -1,2 +1,4 @@
 name: Aim's Page
 markdown: kramdown
+kramdown:
+  parse_block_html: true
