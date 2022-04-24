@@ -12,7 +12,8 @@ WFH
 Lunch with `K'TOE`
 Walk in Central World
 
-## 18 FEB 2022 WFH
+## 18-19 FEB 2022 WFH
+WFH
 
 ## 20 FEB Meeting@Central east Ville
 With `K' Pornchanok`
@@ -20,7 +21,8 @@ With `K' Pornchanok`
 ## 21 FEB Working@Ditto Office
 _Working Near It Desk_
 
-## 22 FEB WFH
+## 22 FEB 
+WFH
 
 ## 23 FEB Meeting@Ditto Office
 With 
@@ -37,10 +39,10 @@ Meeting Room#2 2nd Floor
 ## 25 FEB WFH
 Groceries@The Jazz 
 
-## 26/27 FEB Groceries [High Fever]
-
-Central East Ville
-Central Lat Phrao
+## 26-27 FEB Groceries 
+- Getting [High Fever]
+- Central East Ville
+- Central Lat Phrao
 
 ## 28 FEB
 AIA Surawong
@@ -50,7 +52,9 @@ Bangkok Bank - Siam Paragon
 ## 1 MAR TEST_COVID_POSITIVE
 Crystal Park
 Bangkok Bank - Crystal Park
+<hr/>
 
+# Diagnose
 Vibhavadi : Call center => 02 561 1111 # 1304-7
 
 <iframe src="https://onedrive.live.com/embed?cid=7F8BEABFE91BC366&resid=7F8BEABFE91BC366%218143&authkey=AOegFMDQHT7adQ8&em=2" width="100%" height="712" frameborder="0" scrolling="no"></iframe>
