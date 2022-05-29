@@ -5,7 +5,6 @@ const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
 const cal_button = document.querySelector('#Calculate');
 const APY = document.querySelector('#stakingAPY');
 
-var web3 = new Web3();
 var w_apy;
 
 // doc ready

@@ -1,12 +1,15 @@
 // worker called after formular.js
 
 // init phase
+const Web3 = window.Web3
+const BigNumber = window.BigNumber
 const assert = function(condition, message) {
     if (!condition)
         throw Error('Assert failed: ' + (message || ''));
 };
 
 async function calculateAPY(base,exp) {
+    let web3 = new Web3();
     let r = BigNumber(base).pow(365*200)
     let stk = r.minus(1).multipliedBy(100);
     let stkw3 = web3.toBigNumber(stk).toString(10);
