@@ -26,16 +26,14 @@ if( 'function' === typeof importScripts) {
       console.log('start calculating',input)
 
       // change to reuire then execute
-      importScripts('./require.js');
-      require({ baseUrl: "./"},["require","web3.min","bignumber.min"],(require,Web3,BigNumber) => {
-        let web3 = new Web3();
+      importScripts('./require.js','./web3.min.js','./bignumber.min.js');
+      let web3 = new Web3();
         //   let r = BigNumber(base).pow(365*200)
         //   let stk = r.minus(1).multipliedBy(100);
         //   let stkw3 = web3.toBigNumber(stk).toString(10);
-        let stkw3 = 100;
+      let stkw3 = 100;
 
-        console.log('got output',stkw3)
-        postMessage(stkw3)
-      })
+      console.log('got output',stkw3)
+      postMessage(stkw3)
     }    
  }
