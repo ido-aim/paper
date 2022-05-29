@@ -58,7 +58,8 @@ input => { "args": input }
             w_apy.postMessage({ "args": input });
         }
         w_apy.onmessage = function(e,stop_calAPY_worker) {
-            APY.value = e.data;
+            // APY.value = e.data;
+            console.log(e.data)
             stop_calAPY_worker()
         };
     } else {

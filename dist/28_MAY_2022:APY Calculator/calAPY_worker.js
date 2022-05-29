@@ -18,5 +18,5 @@ function calculateAPY() {
 self.addEventListener("message", function(e) {
     let input = e.data.args; // from input { "args": input } => input = [base,exp]
     // do whatever you need with the arguments
-    console.log(input)
+    postMessage(input);
   }, false);
