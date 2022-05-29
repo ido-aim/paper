@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', init);
 }
 
 function init() {
-
     // hide all spin icons
     console.log('init params & functions')
     spin_apy.style.display = 'none';
@@ -40,22 +39,17 @@ function init() {
         spin_apy.style.display = ''
         let base = (1 + (stakingRebase_el.value * 1) /100); // small number
         let exp = 365 * rebasesPerDay_el.value; // small number
-
         calAPY_worker([base,exp])
-        
     };
-
 }
 
 function calAPY_worker(input){
 /* 
 input => { "args": input }
 */
-
-
     if(typeof(Worker) !== "undefined") { // worker compatible
         if(typeof(w_apy) == "undefined") { // worker object has no created
-            w_apy = new Worker("calAPY_worker.js"); // insecure on files loading
+            w_apy = new Worker("calAPY_worker.js", { type: "module" }); // load worker as a module
             w_apy.postMessage({ "args": input });
         }
 

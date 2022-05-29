@@ -1,8 +1,11 @@
-// worker called after formular.js
+// worker called after formular.js as a module
+// window is not defined
+// self.importScripts( "/app/abc.js" );
 
 // init phase
-const Web3 = window.Web3
-const BigNumber = window.BigNumber
+import Web3 from "https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js";
+import BigNumber from "https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js";
+
 const assert = function(condition, message) {
     if (!condition)
         throw Error('Assert failed: ' + (message || ''));
