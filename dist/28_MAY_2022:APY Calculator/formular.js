@@ -13,7 +13,7 @@ const rewardYield_el = document.querySelector('#rewardYield');
 
 const cal_button = document.querySelector('#Calculate');
 const rebaseAPY = document.querySelector('#rebaseAPY');
-
+const change = new Event('change');
 var w_apy;
 
 // doc ready
@@ -61,24 +61,24 @@ function init() {
 
     currentTotalSupply_el.addEventListener('focusout',function(){
         rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
-        triggerChange(rewardDistributePerRebase_el)
+        rewardDistributePerRebase_el.dispatchEvent(change)
     });
 
     rewardRatePerRebase_el.addEventListener('focusout',function(){
         rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
-        triggerChange(rewardDistributePerRebase_el)
+        rewardDistributePerRebase_el.dispatchEvent(change)
     });
 
     rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
 
     rewardDistributePerRebase_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
-        triggerChange(rewardYield_el)
+        rewardYield_el.dispatchEvent(change)
     });
 
     totalStakedVol_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
-        triggerChange(rewardYield_el)
+        rewardYield_el.dispatchEvent(change)
     });
 
     
@@ -115,9 +115,4 @@ input => { "args": input }
     } else {
         alert("Sorry, your browser does not support Web Workers...");
     }
-}
-
-function triggerChange(el){
-    let evt = new Event('change');
-    el.dispatchEvent(evt);
 }
