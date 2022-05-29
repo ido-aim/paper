@@ -10,10 +10,10 @@ const assert = function(condition, message) {
 
 async function calculateAPY(base,exp) {
     let web3 = new Web3();
-    // let r = BigNumber(base).pow(365*200)
-    // let stk = r.minus(1).multipliedBy(100);
-    // let stkw3 = web3.toBigNumber(stk).toString(10);
-    let stkw3 = 100;
+    let r = BigNumber(base).pow(365*200)
+    let stk = r.minus(1).multipliedBy(100);
+    let stkw3 = web3.toBigNumber(stk).toString(10);
+    // let stkw3 = 100;
     return await stkw3
 }
 
