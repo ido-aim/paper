@@ -1,7 +1,6 @@
 // worker called after formular.js
 // init phase
 var i=0;
-var web3 = new Web3();
 
 console.log('stakingRebase_el.value',stakingRebase_el.value)
 console.log('rebasesPerDay_el.value',rebasesPerDay_el.value)
