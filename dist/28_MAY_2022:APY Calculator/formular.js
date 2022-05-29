@@ -20,6 +20,11 @@ function init() {
     console.log('init params & functions')
     spin_apy.style.display = 'none';
 
+    let myTooltipEl = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    myTooltipEl.forEach(function(el, index){
+        bootstrap.Tooltip(el).show()
+    })
+
     // init/validate sec per block
     if(!Boolean(secondsPerBlock_el.value)){ 
         secondsPerBlock_el.value = 0
