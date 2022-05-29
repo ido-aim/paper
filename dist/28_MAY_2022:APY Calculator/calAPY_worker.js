@@ -27,7 +27,7 @@ if( 'function' === typeof importScripts) {
 
       // change to reuire then execute
       importScripts('./require.js');
-      require({ baseUrl: "./"},["require","web3.min","bignumber.min"],function(require,Web3,BigNumber){
+      require({ baseUrl: "./"},["require","web3.min","bignumber.min"],(require,Web3,BigNumber) => {
         let web3 = new Web3();
         //   let r = BigNumber(base).pow(365*200)
         //   let stk = r.minus(1).multipliedBy(100);
