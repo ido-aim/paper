@@ -51,10 +51,12 @@ function init() {
 
     totalStakedValue_el.addEventListener('focusout',function(){
         totalStakedVol_el.value = BigNumber((totalStakedValue_el.value * 1) / (currentPrice_el.value * 1))
+        totalStakedVol_el.dispatchEvent(change)
     });
 
     currentPrice_el.addEventListener('focusout',function(){
         totalStakedVol_el.value = BigNumber((totalStakedValue_el.value * 1) / (currentPrice_el.value * 1))
+        totalStakedVol_el.dispatchEvent(change)
     });
 
     rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
@@ -73,12 +75,11 @@ function init() {
 
     rewardDistributePerRebase_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
-        rewardYield_el.dispatchEvent(change)
+        
     });
 
     totalStakedVol_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
-        rewardYield_el.dispatchEvent(change)
     });
 
     
