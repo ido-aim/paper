@@ -27,16 +27,15 @@ if( 'function' === typeof importScripts) {
 
       // change to reuire then execute
       importScripts('./require.js');
-      const Web3 = require("./web3.min.js");
-      const BigNumber = require("./bignumber.min.js");
+      require({ baseUrl: "./"},["require","web3.min","bignumber.min"],function(require,Web3,BigNumber){
+        let web3 = new Web3();
+        //   let r = BigNumber(base).pow(365*200)
+        //   let stk = r.minus(1).multipliedBy(100);
+        //   let stkw3 = web3.toBigNumber(stk).toString(10);
+        let stkw3 = 100;
 
-      let web3 = new Web3();
-    //   let r = BigNumber(base).pow(365*200)
-    //   let stk = r.minus(1).multipliedBy(100);
-    //   let stkw3 = web3.toBigNumber(stk).toString(10);
-      let stkw3 = 100;
-
-      console.log('got output',stkw3)
-      postMessage(stkw3)
+        console.log('got output',stkw3)
+        postMessage(stkw3)
+      })
     }    
  }
