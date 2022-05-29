@@ -9,6 +9,10 @@ const assert = function(condition, message) {
 };
 
 async function calculateAPY(base,exp) {
+    importScripts(
+        'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
+        'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
+        );
     let web3 = new Web3();
     let r = BigNumber(base).pow(365*200)
     let stk = r.minus(1).multipliedBy(100);
@@ -30,10 +34,6 @@ self.addEventListener("message", function(e) {
     // long execute function
     console.log('start calculating',input)
     // load CDN scripts
-    importScripts(
-        'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
-        'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
-        );
     calculateAPY(base,exp)
         .then(output=>{
             console.log('got output',output)
