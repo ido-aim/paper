@@ -61,20 +61,24 @@ function init() {
 
     currentTotalSupply_el.addEventListener('focusout',function(){
         rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
+        triggerChange(rewardDistributePerRebase_el)
     });
 
     rewardRatePerRebase_el.addEventListener('focusout',function(){
         rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
+        triggerChange(rewardDistributePerRebase_el)
     });
 
     rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
 
     rewardDistributePerRebase_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+        triggerChange(rewardYield_el)
     });
 
     totalStakedVol_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+        triggerChange(rewardYield_el)
     });
 
     
@@ -111,4 +115,9 @@ input => { "args": input }
     } else {
         alert("Sorry, your browser does not support Web Workers...");
     }
+}
+
+function triggerChange(el){
+    let evt = new Event('change');
+    el.dispatchEvent(evt);
 }
