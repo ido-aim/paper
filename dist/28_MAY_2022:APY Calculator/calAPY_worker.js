@@ -9,16 +9,16 @@ const assert = function(condition, message) {
 };
 
 async function calculateAPY(base,exp) {
-    // let web3 = new Web3();
-    // let r = BigNumber(base).pow(365*200)
-    // let stk = r.minus(1).multipliedBy(100);
-    // let stkw3 = web3.toBigNumber(stk).toString(10);
-    let stkw3 = 100;
+    let web3 = new Web3();
+    let r = BigNumber(base).pow(365*200)
+    let stk = r.minus(1).multipliedBy(100);
+    let stkw3 = web3.toBigNumber(stk).toString(10);
+    // let stkw3 = 100;
     return await stkw3
 }
 
 
-// execute phase after post "message" into worker
+// execute phase after post "message" into worker : ok la
 self.importScripts('https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js');
 self.importScripts('https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js');
 
