@@ -3,30 +3,17 @@
 // self.importScripts( "/app/abc.js" );
 
 // init phase
+
 const assert = function(condition, message) {
     if (!condition)
         throw Error('Assert failed: ' + (message || ''));
 };
 
-async function calculateAPY(base,exp) {
-    
-    let r = BigNumber(base).pow(365*200)
-    let stk = r.minus(1).multipliedBy(100);
-    let stkw3 = web3.toBigNumber(stk).toString(10);
-    // let stkw3 = 100;
-    return await stkw3
-}
-
-
 // execute phase after post "message" into worker 
 // proper initialization
 if( 'function' === typeof importScripts) {
-    importScripts(
-        'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
-        'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
-        );
     addEventListener('message', onMessage);
-    const web3 = new Web3();
+    // const web3 = new Web3(); error
  
     function onMessage(e) { 
       // do some work here 
@@ -37,10 +24,19 @@ if( 'function' === typeof importScripts) {
 
       // long execute function
       console.log('start calculating',input)
-      calculateAPY(base,exp)
-        .then(output=>{
-            console.log('got output',output)
-            postMessage(output)
-        })
+
+      // change to reuire then execute
+      importScripts('./require.js');
+      const Web3 = require("./web3.min.js");
+      const BigNumber = require("./bignumber.min.js");
+
+      let web3 = new Web3();
+    //   let r = BigNumber(base).pow(365*200)
+    //   let stk = r.minus(1).multipliedBy(100);
+    //   let stkw3 = web3.toBigNumber(stk).toString(10);
+      let stkw3 = 100;
+
+      console.log('got output',stkw3)
+      postMessage(stkw3)
     }    
  }
