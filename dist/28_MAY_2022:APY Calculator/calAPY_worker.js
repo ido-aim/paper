@@ -9,15 +9,11 @@ const assert = function(condition, message) {
 };
 
 async function calculateAPY(base,exp) {
-    importScripts(
-        'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
-        'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
-        );
-    let web3 = new Web3();
-    let r = BigNumber(base).pow(365*200)
-    let stk = r.minus(1).multipliedBy(100);
-    let stkw3 = web3.toBigNumber(stk).toString(10);
-    // let stkw3 = 100;
+    // let web3 = new Web3();
+    // let r = BigNumber(base).pow(365*200)
+    // let stk = r.minus(1).multipliedBy(100);
+    // let stkw3 = web3.toBigNumber(stk).toString(10);
+    let stkw3 = 100;
     return await stkw3
 }
 
@@ -33,6 +29,13 @@ self.addEventListener("message", function(e) {
 
     // long execute function
     console.log('start calculating',input)
+    // import web worker
+    importScripts(
+        'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
+        'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
+        );
+
+    console.log(BigNumber)    
     // load CDN scripts
     calculateAPY(base,exp)
         .then(output=>{
