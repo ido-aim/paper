@@ -30,5 +30,8 @@ self.addEventListener("message", function(e) {
     // long execute function
     console.log('start calculating',input)
     calculateAPY(base,exp)
-        .then(output=>{postMessage(output)})
+        .then(output=>{
+            console.log(output)
+            postMessage(output)
+        })
   }, false);
