@@ -9,7 +9,7 @@ const assert = function(condition, message) {
 };
 
 async function calculateAPY(base,exp) {
-    let web3 = new Web3();
+    
     let r = BigNumber(base).pow(365*200)
     let stk = r.minus(1).multipliedBy(100);
     let stkw3 = web3.toBigNumber(stk).toString(10);
@@ -26,6 +26,7 @@ if( 'function' === typeof importScripts) {
         'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
         );
     addEventListener('message', onMessage);
+    const web3 = new Web3();
  
     function onMessage(e) { 
       // do some work here 
