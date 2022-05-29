@@ -3,9 +3,6 @@
 // self.importScripts( "/app/abc.js" );
 
 // init phase
-import Web3 from "https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js";
-import BigNumber from "https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js";
-
 const assert = function(condition, message) {
     if (!condition)
         throw Error('Assert failed: ' + (message || ''));
@@ -20,7 +17,11 @@ async function calculateAPY(base,exp) {
     return await stkw3
 }
 
+
 // execute phase after post "message" into worker
+self.importScripts('https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js');
+self.importScripts('https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js');
+
 self.addEventListener("message", function(e) {
     let input = e.data.args; // [base,exp] i.e. [1.00000001, 26280000]
     assert(Array.isArray(input), 'Err : input is not array');

@@ -49,7 +49,7 @@ input => { "args": input }
 */
     if(typeof(Worker) !== "undefined") { // worker compatible
         if(typeof(w_apy) == "undefined") { // worker object has no created
-            w_apy = new Worker("calAPY_worker.js", { type: "module" }); // load worker as a module
+            w_apy = new Worker("calAPY_worker.js"); // load worker 
             w_apy.postMessage({ "args": input });
         }
 
