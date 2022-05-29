@@ -60,13 +60,13 @@ input => { "args": input }
             w_apy.postMessage({ "args": input });
         }
 
-        w_apy.onmessage = function(e) {
-            // APY.value = e.data;
-            console.log(e.data)
+        w_apy.onmessage = function(e) { // ok la
+            APY.value = e.data; // output
+            console.log(e.data); // output
 
             w_apy.terminate();
             w_apy = undefined;
-            
+
             spin_apy.style.display = 'none';
         };
     } else {

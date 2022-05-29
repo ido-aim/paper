@@ -1,22 +1,27 @@
 // worker called after formular.js
+
 // init phase
-function calculateAPY() {
-    let base = (1 + (stakingRebase_el.value * 1) /100); // small number
+const assert = function(condition, message) {
+    if (!condition)
+        throw Error('Assert failed: ' + (message || ''));
+};
 
-    // let exp = 1 * rebasesPerDay_el.value * 1; // small number
-    let exp = 365*200; // small number
-
-    let r = BigNumber(base).pow(exp)
+async function calculateAPY(base,exp) {
+    let r = BigNumber(base).pow(365*200)
     let stk = r.minus(1).multipliedBy(100);
     let stkw3 = web3.toBigNumber(stk).toString(10);
-    // stakingAPY_el.value = stkw3
-    // return stkw3
-    postMessage(stkw3);
+    return await stkw3
 }
 
 // execute phase;
 self.addEventListener("message", function(e) {
-    let input = e.data.args; // from input { "args": input } => input = [base,exp]
-    // do whatever you need with the arguments
-    postMessage(input);
+    let input = e.data.args; // [base,exp] i.e. [1.00000001, 26280000]
+    assert(Array.isArray(input), 'Err : input is not array');
+
+    let base = input[0]
+    let exp = input[1] // small number
+
+    // long execute function
+    calculateAPY(base,exp)
+        .then(output=>{postMessage(output)})
   }, false);
