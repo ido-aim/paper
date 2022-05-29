@@ -18,28 +18,28 @@ async function calculateAPY(base,exp) {
 }
 
 
-// execute phase after post "message" into worker : ok la
-
-self.addEventListener("message", function(e) {
-    let input = e.data.args; // [base,exp] i.e. [1.00000001, 26280000]
-    assert(Array.isArray(input), 'Err : input is not array');
-
-    let base = input[0]
-    let exp = input[1] // small number
-
-    // long execute function
-    console.log('start calculating',input)
-    // import web worker
+// execute phase after post "message" into worker 
+// proper initialization
+if( 'function' === typeof importScripts) {
     importScripts(
         'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
         'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
         );
+    addEventListener('message', onMessage);
+ 
+    function onMessage(e) { 
+      // do some work here 
+      let input = e.data.args; // [base,exp] i.e. [1.00000001, 26280000]
+      assert(Array.isArray(input), 'Err : input is not array');
+      let base = input[0]
+      let exp = input[1] // small number
 
-    console.log(BigNumber)    
-    // load CDN scripts
-    calculateAPY(base,exp)
+      // long execute function
+      console.log('start calculating',input)
+      calculateAPY(base,exp)
         .then(output=>{
             console.log('got output',output)
             postMessage(output)
         })
-  }, false);
+    }    
+ }
