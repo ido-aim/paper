@@ -32,7 +32,7 @@
     <div class="card card-body">
         here is how to calculate the APY.
         <pre><code class="language-markdown">
-        Regular (3,3) Staking APY
+        # Regular (3,3) Staking APY
 
         secondsPerBlock @ 1.2s per block as of today. (this has changed a huge amount affecting the apy quite a bit)
         link : https://ftmscan.com/chart/blocktime
@@ -41,16 +41,15 @@
         stakingRebase = stakingRewardFHM / originalStakingCircSupply
         stakingAPY = (1 + stakingRebase)^ (365 * rebasesPerDay) - 1
 
-        # 5 day roi is:
-
+        5 day roi is:
         fiveDayRate =  (1 + stakingRebase)^ (5 * rebasesPerDay) - 1 
 
-        Accelerated (6,6) Staking APY
+        # Accelerated (6,6) Staking APY
 
         thirtyDayStakingRebase = thirtyDayFutureRewards / thirtyDayTVL
         thirtyDayAPY = (1 + stakingRebase + thirtyDayStakingRebase)^(365 * rebasesPerDay) - 1
 
-        # 30 day roi is:
+        30 day roi is:
 
         thirtyDayRate = (1 + stakingRebase + thirtyDayStakingRebase)^(30 * rebasesPerDay) - 1
         </pre></code>
@@ -59,24 +58,21 @@
 
 <!-- form -->
 
-<div class="row">
-<p>Regular (3,3) Staking APY</p>
-</div>
 
 <div class="row py-2">
 <div class="col-md-4">
-    <a href="#" data-bs-toggle="tooltip" title="Hooray!">secondsPerBlock :</a>
+    <a href="#" data-bs-toggle="tooltip" title="secondsPerBlock @ 1.2s per block as of today.">secondsPerBlock(sec) :</a>
     <input type="text" id="secondsPerBlock" name="secondsPerBlock" value="1.2">
 </div> <!-- end form col-1 -->
 <div class="col-md-4">
-    <label for="rebasesPerDay">rebasesPerDay(blocks): </label>
+    <a href="#" data-bs-toggle="tooltip" title="rebasesPerDay = 24 * 60 * 60 / secondsPerBlock">rebasesPerDay(blocks) :</a>
     <input type="text" id="rebasesPerDay" name="rebasesPerDay">
 </div> <!-- end form col 2 -->
 </div> <!-- end form row -->
 
 <div class="row py-2">
 <div class="col-md-4">
-    <label for="stakingRebase">stakingRebase(%): </label>
+    <a href="#" data-bs-toggle="tooltip" title="stakingRebase = stakingRewardFHM / originalStakingCircSupply">stakingRebase(%) :</a>
     <input type="text" id="stakingRebase" name="stakingRebase" value="0.000001">
 </div>
 <div class="col-md-4">
@@ -91,7 +87,7 @@
 
 <div class="row py-2">
     <div class="col-md-4">
-        <label for="stakingAPY">stakingAPY(%): </label>
+        <a href="#" data-bs-toggle="tooltip" title="stakingAPY = (1 + stakingRebase)^ (365 * rebasesPerDay) - 1">stakingAPY(%) :</a>
         <input type="text" id="stakingAPY" name="stakingAPY">
         <div id="APYloading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>

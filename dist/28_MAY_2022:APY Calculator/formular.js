@@ -22,7 +22,7 @@ function init() {
 
     let myTooltipEl = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     myTooltipEl.forEach(function(el, index){
-        bootstrap.Tooltip(el).show()
+        new bootstrap.Tooltip(el)
     })
 
     // init/validate sec per block
