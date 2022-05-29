@@ -1,7 +1,12 @@
 // worker called after formular.js
 // init phase
-const stakingRebase_el = document.querySelector('#stakingRebase');
-const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
+let stakingRebase_el = document.querySelector('#stakingRebase');
+let rebasesPerDay_el = document.querySelector('#rebasesPerDay');
+
+//get value
+if(!Boolean(stakingRebase_el.value)){ 
+    stakingRebase_el.value = 0
+}
 
 console.log('stakingRebase_el.value',stakingRebase_el.value)
 console.log('rebasesPerDay_el.value',rebasesPerDay_el.value)

@@ -1,7 +1,7 @@
 const spin_apy = document.querySelector('#APYloading');
 const secondsPerBlock_el = document.querySelector('#secondsPerBlock');
 // const stakingRebase_el = document.querySelector('#stakingRebase');
-// const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
+const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
 const cal_button = document.querySelector('#Calculate');
 const APY = document.querySelector('#stakingAPY');
 
@@ -31,11 +31,6 @@ function init() {
     // init sec per block
     if(!Boolean(secondsPerBlock_el.value)){ 
         secondsPerBlock_el.value = 0
-    }
-
-    //get value
-    if(!Boolean(stakingRebase_el.value)){ 
-        stakingRebase_el.value = 0
     }
 
     // init rebasesPerDay
