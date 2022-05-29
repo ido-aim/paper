@@ -19,8 +19,6 @@ async function calculateAPY(base,exp) {
 
 
 // execute phase after post "message" into worker : ok la
-self.importScripts('https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js');
-self.importScripts('https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js');
 
 self.addEventListener("message", function(e) {
     let input = e.data.args; // [base,exp] i.e. [1.00000001, 26280000]
@@ -31,9 +29,13 @@ self.addEventListener("message", function(e) {
 
     // long execute function
     console.log('start calculating',input)
+
+    self.importScripts('https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js');
+    self.importScripts('https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js');
+    
     calculateAPY(base,exp)
         .then(output=>{
             console.log('got output',output)
-            postMessage(output)
+            self.postMessage(output)
         })
   }, false);
