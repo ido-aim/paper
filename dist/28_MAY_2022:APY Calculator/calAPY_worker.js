@@ -19,7 +19,7 @@ async function calculateAPY(base,exp) {
     return await stkw3
 }
 
-// execute phase;
+// execute phase after post "message" into worker
 self.addEventListener("message", function(e) {
     let input = e.data.args; // [base,exp] i.e. [1.00000001, 26280000]
     assert(Array.isArray(input), 'Err : input is not array');
@@ -28,6 +28,7 @@ self.addEventListener("message", function(e) {
     let exp = input[1] // small number
 
     // long execute function
+    console.log('start calculating')
     calculateAPY(base,exp)
         .then(output=>{postMessage(output)})
   }, false);
