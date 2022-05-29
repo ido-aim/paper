@@ -3,11 +3,6 @@
 // self.importScripts( "/app/abc.js" );
 
 // init phase
-importScripts(
-'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
-'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
-);
-
 const assert = function(condition, message) {
     if (!condition)
         throw Error('Assert failed: ' + (message || ''));
@@ -34,6 +29,11 @@ self.addEventListener("message", function(e) {
 
     // long execute function
     console.log('start calculating',input)
+    // load CDN scripts
+    importScripts(
+        'https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js',
+        'https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'
+        );
     calculateAPY(base,exp)
         .then(output=>{
             console.log('got output',output)
