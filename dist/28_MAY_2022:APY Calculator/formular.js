@@ -1,9 +1,18 @@
 const spin_apy = document.querySelector('#APYloading');
 const secondsPerBlock_el = document.querySelector('#secondsPerBlock');
-const stakingRebase_el = document.querySelector('#stakingRebase');
-const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
+const blocksPerHrs_el = document.querySelector('#blocksPerHrs');
+const rebaseHrs_el = document.querySelector('#rebaseHrs');
+const totalStakedVol_el = document.querySelector('#totalStakedVol');
+const totalStakedValue_el = document.querySelector('#totalStakedValue');
+const currentPrice_el = document.querySelector('#currentPrice');
+const rewardRatePerRebase_el = document.querySelector('#rewardRatePerRebase');
+const currentTotalSupply_el = document.querySelector('#currentTotalSupply');
+const rewardDistributePerRebase_el = document.querySelector('#rewardDistributePerRebase');
+const rewardYield_el = document.querySelector('#rewardYield');
+
+
 const cal_button = document.querySelector('#Calculate');
-const APY = document.querySelector('#stakingAPY');
+const rebaseAPY = document.querySelector('#rebaseAPY');
 
 var w_apy;
 
@@ -30,20 +39,52 @@ function init() {
         secondsPerBlock_el.value = 0
     }
 
-    // init/validate staking rebase value
-    if(!Boolean(stakingRebase_el.value)){ 
-        stakingRebase_el.value = 0
-    }
-
     // init rebasesPerDay
-    rebasesPerDay_el.value = 24 * 60 * 60 / secondsPerBlock_el.value * 1
+    blocksPerHrs_el.value = 60 * 60 / (secondsPerBlock_el.value * 1)
+    rebaseHrs_el.value = 30000 / (blocksPerHrs_el.value * 1)
+    secondsPerBlock_el.addEventListener('focusout',function(){
+        blocksPerHrs_el.value = 60 * 60 / (secondsPerBlock_el.value * 1)
+        rebaseHrs_el.value = 30000 / (blocksPerHrs_el.value * 1)
+    });
 
+    totalStakedVol_el.value = BigNumber((totalStakedValue_el.value * 1) / (currentPrice_el.value * 1))
+
+    totalStakedValue_el.addEventListener('focusout',function(){
+        totalStakedVol_el.value = BigNumber((totalStakedValue_el.value * 1) / (currentPrice_el.value * 1))
+    });
+
+    currentPrice_el.addEventListener('focusout',function(){
+        totalStakedVol_el.value = BigNumber((totalStakedValue_el.value * 1) / (currentPrice_el.value * 1))
+    });
+
+    rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
+
+    currentTotalSupply_el.addEventListener('focusout',function(){
+        rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
+    });
+
+    rewardRatePerRebase_el.addEventListener('focusout',function(){
+        rewardDistributePerRebase_el.value = BigNumber((currentTotalSupply_el.value * 1) * (rewardRatePerRebase_el.value * 1))
+    });
+
+    rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+
+    rewardDistributePerRebase_el.addEventListener('change',function(){
+        rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+    });
+
+    totalStakedVol_el.addEventListener('change',function(){
+        rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+    });
+
+    
     // bind calculate APY button
     cal_button.onclick = function () {
         // loading
         spin_apy.style.display = ''
-        let base = (1 + (stakingRebase_el.value * 1) /100); // small number
-        let exp = 365 * rebasesPerDay_el.value; // small number
+        let base = 1 + (rewardYield_el.value * 1); // small number
+        let exp = 365 * (24 / rebaseHrs_el.value * 1); // small number
+
         calAPY_worker([base,exp])
     };
 }
@@ -59,7 +100,7 @@ input => { "args": input }
         }
 
         w_apy.onmessage = function(e) { // ok la
-            APY.value = e.data; // output
+            rebaseAPY.value = e.data; // output
             console.log(e.data); // output
 
             w_apy.terminate();

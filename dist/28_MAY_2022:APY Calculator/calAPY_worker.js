@@ -26,7 +26,7 @@ if( 'function' === typeof importScripts) {
         console.log('start calculating',input)
 
         importScripts('./bignumber.min.js');
-        let r = BigNumber(base).pow(365*200)
+        let r = BigNumber(base).pow(exp)
         let stk = r.minus(1).multipliedBy(100);
         let stkw3 = stk.toFixed(10);
         // let stkw3 = 100;

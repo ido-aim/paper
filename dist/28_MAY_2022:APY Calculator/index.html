@@ -14,6 +14,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <!-- Bootstrap JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- bignumber -->
+<script src="./bignumber.min.js"></script>
 <!-- preloads worker.js and its dependencies: -->
 <link rel="modulepreload" href="./calAPY_worker.js">
 </header>
@@ -61,34 +63,57 @@
 
 <div class="row py-2">
 <div class="col-md-4">
-    <a href="#" data-bs-toggle="tooltip" title="secondsPerBlock @ 1.2s per block as of today.">secondsPerBlock(sec) :</a>
-    <input type="text" id="secondsPerBlock" name="secondsPerBlock" value="1.2">
+    <a href="#" data-bs-toggle="tooltip" title="1 block spend x (time) to generate">secondsPerBlock(sec) :</a>
+    <input type="text" id="secondsPerBlock" name="secondsPerBlock" value="1.16">
 </div> <!-- end form col-1 -->
 <div class="col-md-4">
-    <a href="#" data-bs-toggle="tooltip" title="rebasesPerDay = 24 * 60 * 60 / secondsPerBlock">rebasesPerDay(blocks) :</a>
-    <input type="text" id="rebasesPerDay" name="rebasesPerDay">
+    <a href="#" data-bs-toggle="tooltip" title="blocksPerHrs = 60 * 60 / secondsPerBlock">blocksPerHrs(blocks/hours) :</a>
+    <input type="text" id="blocksPerHrs" name="blocksPerHrs">
+</div> <!-- end form col 2 -->
+<div class="col-md-4">
+    <a href="#" data-bs-toggle="tooltip" title="rebaseHrs = 30000 / blocksPerHrs">rebaseHrs(hrs) :</a>
+    <input type="text" id="rebaseHrs" name="rebaseHrs">
 </div> <!-- end form col 2 -->
 </div> <!-- end form row -->
 
 <div class="row py-2">
 <div class="col-md-4">
-    <a href="#" data-bs-toggle="tooltip" title="stakingRebase = stakingRewardFHM / originalStakingCircSupply">stakingRebase(%) :</a>
-    <input type="text" id="stakingRebase" name="stakingRebase" value="0.000001">
+    <a href="#" data-bs-toggle="tooltip" title="rewardDistributePerRebase = currentTotalSupply * rewardRatePerRebase">rewardDistributePerRebase(tokens) :</a>
+    <input type="text" id="rewardDistributePerRebase" name="rewardDistributePerRebase">
 </div>
 <div class="col-md-4">
-    <label for="stakingRewardFHM">stakingRewardFHM: </label>
-    <input type="text" id="stakingRewardFHM" name="stakingRewardFHM">
+    <a href="#" data-bs-toggle="tooltip" title="currentTotalSupply. included tradeable and non-tradeable">currentTotalSupply(tokens) :</a>
+    <input type="text" id="currentTotalSupply" name="currentTotalSupply" value="4390929">
 </div>
 <div class="col-md-4">
-    <label for="originalStakingCircSupply">originalStakingCircSupply: </label>
-    <input type="text" id="originalStakingCircSupply" name="originalStakingCircSupply">
+    <a href="#" data-bs-toggle="tooltip" title="rewardRatePerRebase(controlled)">rewardRatePerRebase(controlled) :</a>
+    <input type="text" id="rewardRatePerRebase" name="rewardRatePerRebase" value="0.000005">
 </div>
 </div> <!-- end row -->
 
 <div class="row py-2">
     <div class="col-md-4">
-        <a href="#" data-bs-toggle="tooltip" title="stakingAPY = (1 + stakingRebase)^ (365 * rebasesPerDay) - 1">stakingAPY(%) :</a>
-        <input type="text" id="stakingAPY" name="stakingAPY">
+        <a href="#" data-bs-toggle="tooltip" title="totalStakedVol = totalStakedValue / currentPrice">totalStakedVol(tokens) :</a>
+        <input type="text" id="totalStakedVol" name="totalStakedVol">
+    </div>
+    <div class="col-md-4">
+        <a href="#" data-bs-toggle="tooltip" title="totalStakedValue of all contracts in the protocol">totalStakedValue($) :</a>
+        <input type="text" id="totalStakedValue" name="totalStakedValue" value="2103771">
+    </div>
+    <div class="col-md-4">
+        <a href="#" data-bs-toggle="tooltip" title="currentPrice">currentPrice($) :</a>
+        <input type="text" id="currentPrice" name="currentPrice" value="0.97">
+    </div>
+    </div> <!-- end row -->
+
+<div class="row py-2">
+    <div class="col-md-4">
+        <a href="#" data-bs-toggle="tooltip" title="rewardYield = rewardDistributePerRebase / totalStakedVol">rewardYield :</a>
+        <input type="text" id="rewardYield" name="rewardYield">
+    </div>
+    <div class="col-md-4">
+        <a href="#" data-bs-toggle="tooltip" title="rebaseAPY = ((1 + rewardYield)^365 * ( 24 / rebaseHrs)) - 1">rebaseAPY(%) :</a>
+        <input type="text" id="rebaseAPY" name="rebaseAPY">
         <div id="APYloading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
         </div>
@@ -107,5 +132,6 @@
 <!-- prism js for syntax highlighter -->
 <script src="./prism.js"></script>
 <script src="./formular.js"></script>
+
 </body>
 </html>
