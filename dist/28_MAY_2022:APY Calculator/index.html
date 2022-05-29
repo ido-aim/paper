@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APY Calculator</title>
+</head>
+<header>
+<!-- prism css for syntax highlighter -->
+<link rel="stylesheet" href="./prism.css">
+<!-- code put into boday tag -->
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- bignumber -->
+<script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
+<!-- web3 -->
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@0.20.6/dist/web3.min.js"></script>
+</header>
+
+<body>
+<div class="container">
+<div class="row">
+    <div class="d-flex flex-row py-4"></div>
+    <p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFormular" aria-expanded="false" aria-controls="collapseFormular">
+        Reference Formular
+    </button>
+    </p>
+
+    <div class="collapse" id="collapseFormular">
+    <div class="card card-body">
+        here is how to calculate the APY.
+        <pre><code class="language-markdown">
+        Regular (3,3) Staking APY
+
+        secondsPerBlock @ 1.2s per block as of today. (this has changed a huge amount affecting the apy quite a bit)
+        link : https://ftmscan.com/chart/blocktime
+
+        rebasesPerDay = 24 * 60 * 60 / secondsPerBlock
+        stakingRebase = stakingRewardFHM / originalStakingCircSupply
+        stakingAPY = (1 + stakingRebase)^ (365 * rebasesPerDay) - 1
+
+        # 5 day roi is:
+
+        fiveDayRate =  (1 + stakingRebase)^ (5 * rebasesPerDay) - 1 
+
+        Accelerated (6,6) Staking APY
+
+        thirtyDayStakingRebase = thirtyDayFutureRewards / thirtyDayTVL
+        thirtyDayAPY = (1 + stakingRebase + thirtyDayStakingRebase)^(365 * rebasesPerDay) - 1
+
+        # 30 day roi is:
+
+        thirtyDayRate = (1 + stakingRebase + thirtyDayStakingRebase)^(30 * rebasesPerDay) - 1
+        </pre></code>
+    </div>
+    </div> <!-- end collapse formular -->
+
+<!-- form -->
+
+<div class="row">
+<p>Regular (3,3) Staking APY</p>
+</div>
+
+<div class="row py-2">
+<div class="col-md-4">
+    <label for="secondsPerBlock">secondsPerBlock(sec): </label>
+    <input type="text" id="secondsPerBlock" name="secondsPerBlock" value="1.2">
+</div> <!-- end form col-1 -->
+<div class="col-md-4">
+    <label for="rebasesPerDay">rebasesPerDay(blocks): </label>
+    <input type="text" id="rebasesPerDay" name="rebasesPerDay">
+</div> <!-- end form col 2 -->
+</div> <!-- end form row -->
+
+<div class="row py-2">
+<div class="col-md-4">
+    <label for="stakingRebase">stakingRebase(%): </label>
+    <input type="text" id="stakingRebase" name="stakingRebase" value="0.000001">
+</div>
+<div class="col-md-4">
+    <label for="stakingRewardFHM">stakingRewardFHM: </label>
+    <input type="text" id="stakingRewardFHM" name="stakingRewardFHM">
+</div>
+<div class="col-md-4">
+    <label for="originalStakingCircSupply">originalStakingCircSupply: </label>
+    <input type="text" id="originalStakingCircSupply" name="originalStakingCircSupply">
+</div>
+</div> <!-- end row -->
+
+<div class="row py-2">
+    <div class="col-md-4">
+        <label for="stakingAPY">stakingAPY(%): </label>
+        <input type="text" id="stakingAPY" name="stakingAPY">
+        <div id="APYloading" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <button id="Calculate" type="button" class="btn btn-primary">Calculate</button>
+    </div>
+</div>
+
+<!-- end form -->
+
+
+</div>  <!-- end row -->
+</div>  <!-- end container -->
+
+<!-- prism js for syntax highlighter -->
+<script src="./prism.js"></script>
+<script src="./formular.js"></script>
+</body>
+</html>
