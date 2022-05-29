@@ -25,10 +25,10 @@ if( 'function' === typeof importScripts) {
         // long execute function
         console.log('start calculating',input)
 
-        importScripts('./bignumber.min.js');
-        let r = BigNumber(base).pow(exp)
-        let stk = r.minus(1).multipliedBy(100);
-        let stkw3 = stk.toFixed(10);
+        importScripts('./decimal.js');
+        let r = new Decimal(base).pow(exp)
+        let stk = r.minus(1).mul(100);
+        let stkw3 = stk.toFixed(10,Decimal.ROUND_DOWN);
         // let stkw3 = 100;
 
       console.log('got output',stkw3)
