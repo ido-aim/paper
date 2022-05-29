@@ -1,6 +1,6 @@
 const spin_apy = document.querySelector('#APYloading');
 const secondsPerBlock_el = document.querySelector('#secondsPerBlock');
-// const stakingRebase_el = document.querySelector('#stakingRebase');
+const stakingRebase_el = document.querySelector('#stakingRebase');
 const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
 const cal_button = document.querySelector('#Calculate');
 const APY = document.querySelector('#stakingAPY');
@@ -10,46 +10,52 @@ var w_apy;
 
 // doc ready
 if (document.readyState != 'loading'){
-main();
+console.log('Document Ready')
+init();
 } else {
-document.addEventListener('DOMContentLoaded', main);
+document.addEventListener('DOMContentLoaded', init);
 }
-
-function main() {
-    console.log('Document Ready')
-    // init
-    init()
-}  
 
 function init() {
 
-    // prefill/ edit value if non
+    // hide all spin icons
     console.log('init params & functions')
     spin_apy.style.display = 'none';
 
-    // start value
-    // init sec per block
+    // init/validate sec per block
     if(!Boolean(secondsPerBlock_el.value)){ 
         secondsPerBlock_el.value = 0
+    }
+
+    // init/validate staking rebase value
+    if(!Boolean(stakingRebase_el.value)){ 
+        stakingRebase_el.value = 0
     }
 
     // init rebasesPerDay
     rebasesPerDay_el.value = 24 * 60 * 60 / secondsPerBlock_el.value * 1
 
-    cal_button.onclick = async function () {
+    // bind calculate APY button
+    cal_button.onclick = function () {
         // loading
         spin_apy.style.display = ''
-        calAPY_worker()
+        let base = (1 + (stakingRebase_el.value * 1) /100); // small number
+        let exp = 365*200; // small number
+
+        calAPY_worker([base,exp])
         
     };
 
 }
 
-function calAPY_worker(){
+function calAPY_worker(input){
+/* 
+input => { "args": input }
+*/
     if(typeof(Worker) !== "undefined") { // worker compatible
         if(typeof(w_apy) == "undefined") { // worker object has no created
-            w_apy = new Worker("calAPY_worker.js"); // insecure
-            // w_apy.register();
+            w_apy = new Worker("calAPY_worker.js"); // insecure on files loading
+            w_apy.postMessage({ "args": input });
         }
         w_apy.onmessage = function(e,stop_calAPY_worker) {
             APY.value = e.data;

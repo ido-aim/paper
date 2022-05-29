@@ -1,16 +1,5 @@
 // worker called after formular.js
 // init phase
-let stakingRebase_el = document.querySelector('#stakingRebase');
-let rebasesPerDay_el = document.querySelector('#rebasesPerDay');
-
-//get value
-if(!Boolean(stakingRebase_el.value)){ 
-    stakingRebase_el.value = 0
-}
-
-console.log('stakingRebase_el.value',stakingRebase_el.value)
-console.log('rebasesPerDay_el.value',rebasesPerDay_el.value)
-
 function calculateAPY() {
     let base = (1 + (stakingRebase_el.value * 1) /100); // small number
 
@@ -25,4 +14,9 @@ function calculateAPY() {
     postMessage(stkw3);
 }
 
-calculateAPY();
+// execute phase;
+self.addEventListener("message", function(e) {
+    let input = e.data.args; // from input { "args": input } => input = [base,exp]
+    // do whatever you need with the arguments
+    console.log(input)
+  }, false);
