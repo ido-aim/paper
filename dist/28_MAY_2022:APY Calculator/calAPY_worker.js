@@ -1,6 +1,7 @@
 // worker called after formular.js
 // init phase
-var i=0;
+const stakingRebase_el = document.querySelector('#stakingRebase');
+const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
 
 console.log('stakingRebase_el.value',stakingRebase_el.value)
 console.log('rebasesPerDay_el.value',rebasesPerDay_el.value)

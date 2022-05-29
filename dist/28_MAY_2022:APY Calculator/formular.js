@@ -1,7 +1,7 @@
 const spin_apy = document.querySelector('#APYloading');
 const secondsPerBlock_el = document.querySelector('#secondsPerBlock');
-const stakingRebase_el = document.querySelector('#stakingRebase');
-const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
+// const stakingRebase_el = document.querySelector('#stakingRebase');
+// const rebasesPerDay_el = document.querySelector('#rebasesPerDay');
 const cal_button = document.querySelector('#Calculate');
 const APY = document.querySelector('#stakingAPY');
 
