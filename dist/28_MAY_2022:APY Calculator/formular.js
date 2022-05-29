@@ -40,7 +40,7 @@ function init() {
         // loading
         spin_apy.style.display = ''
         let base = (1 + (stakingRebase_el.value * 1) /100); // small number
-        let exp = 365*200; // small number
+        let exp = 365 * rebasesPerDay_el.value; // small number
 
         calAPY_worker([base,exp])
         
@@ -52,24 +52,24 @@ function calAPY_worker(input){
 /* 
 input => { "args": input }
 */
+
+
     if(typeof(Worker) !== "undefined") { // worker compatible
         if(typeof(w_apy) == "undefined") { // worker object has no created
             w_apy = new Worker("calAPY_worker.js"); // insecure on files loading
             w_apy.postMessage({ "args": input });
         }
-        w_apy.onmessage = function(e,stop_calAPY_worker) {
+
+        w_apy.onmessage = function(e) {
             // APY.value = e.data;
             console.log(e.data)
-            stop_calAPY_worker()
+
+            w_apy.terminate();
+            w_apy = undefined;
+            
+            spin_apy.style.display = 'none';
         };
     } else {
         alert("Sorry, your browser does not support Web Workers...");
     }
-}
-
-function stop_calAPY_worker() { 
-    w_apy.terminate();
-    // w_apy.unregister();
-    w_apy = undefined;
-    spin_apy.style.display = 'none';
 }
