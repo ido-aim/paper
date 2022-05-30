@@ -9,11 +9,16 @@ const rewardRatePerRebase_el = document.querySelector('#rewardRatePerRebase');
 const currentTotalSupply_el = document.querySelector('#currentTotalSupply');
 const rewardDistributePerRebase_el = document.querySelector('#rewardDistributePerRebase');
 const rewardYield_el = document.querySelector('#rewardYield');
-
+const percentRebaseYield_el = document.querySelector('#percentRebaseYield');
+const ninetyDayStakingRebase_el = document.querySelector('#ninetyDayStakingRebase');
+const ninetyDayFutureRewards_el = document.querySelector('#ninetyDayFutureRewards');
+const ninetyDayTVL_el = document.querySelector('#ninetyDayTVL');
+const ninetyDayRebase_el = document.querySelector('#ninetyDayRebase');
 
 const cal_button = document.querySelector('#Calculate');
 const rebaseAPY = document.querySelector('#rebaseAPY');
 const change = new Event('change');
+
 var w_apy;
 
 // doc ready
@@ -72,15 +77,31 @@ function init() {
     });
 
     rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+    percentRebaseYield_el.value = BigNumber(rewardYield_el.value).multipliedBy(100)
 
     rewardDistributePerRebase_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+        percentRebaseYield_el.value = BigNumber(rewardYield_el.value).multipliedBy(100)
         
     });
 
     totalStakedVol_el.addEventListener('change',function(){
         rewardYield_el.value = BigNumber((rewardDistributePerRebase_el.value * 1) / (totalStakedVol_el.value * 1))
+        percentRebaseYield_el.value = BigNumber(rewardYield_el.value).multipliedBy(100)
     });
+
+    ninetyDayStakingRebase_el.value = BigNumber(ninetyDayFutureRewards_el.value/ ninetyDayTVL_el.value)
+    ninetyDayRebase_el.value = BigNumber(ninetyDayStakingRebase_el.value).multipliedBy(100)
+
+    ninetyDayFutureRewards_el.addEventListener('change',function(){
+        ninetyDayStakingRebase_el.value = BigNumber(ninetyDayFutureRewards_el.value/ ninetyDayTVL_el.value)
+        ninetyDayRebase_el.value = BigNumber(ninetyDayStakingRebase_el.value).multipliedBy(100)
+    })
+
+    ninetyDayTVL_el.addEventListener('change',function(){
+        ninetyDayStakingRebase_el.value = BigNumber(ninetyDayFutureRewards_el.value/ ninetyDayTVL_el.value)
+        ninetyDayRebase_el.value = BigNumber(ninetyDayStakingRebase_el.value).multipliedBy(100)
+    })
 
     
     // bind calculate APY button

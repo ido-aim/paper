@@ -59,7 +59,9 @@
     </div> <!-- end collapse formular -->
 
 <!-- form -->
-
+<div class="row py-2">
+    (3,3)
+</div>
 
 <div class="row py-2">
 <div class="col-md-4">
@@ -87,7 +89,7 @@
 </div>
 <div class="col-md-4">
     <a href="#" data-bs-toggle="tooltip" title="rewardRatePerRebase(controlled)">rewardRatePerRebase(controlled) :</a>
-    <input type="text" id="rewardRatePerRebase" name="rewardRatePerRebase" value="0.000005">
+    <input type="text" id="rewardRatePerRebase" name="rewardRatePerRebase" value="0.000006">
 </div>
 </div> <!-- end row -->
 
@@ -107,18 +109,22 @@
     </div> <!-- end row -->
 
 <div class="row py-2">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <a href="#" data-bs-toggle="tooltip" title="rewardYield = rewardDistributePerRebase / totalStakedVol">rewardYield :</a>
         <input type="text" id="rewardYield" name="rewardYield">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <a href="#" data-bs-toggle="tooltip" title="percentRebaseYield(%) = rewardDistributePerRebase / totalStakedVol">percentRebaseYield(%) :</a>
+        <input type="text" id="percentRebaseYield" name="percentRebaseYield">
+    </div>
+    <div class="col-md-3">
         <a href="#" data-bs-toggle="tooltip" title="rebaseAPY = ((1 + rewardYield)^365 * ( 24 / rebaseHrs)) - 1">rebaseAPY(%) :</a>
         <input type="text" id="rebaseAPY" name="rebaseAPY">
         <div id="APYloading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <button id="Calculate" type="button" class="btn btn-primary">Calculate</button>
     </div>
 </div>
@@ -127,6 +133,35 @@
 
 
 </div>  <!-- end row -->
+
+<div class="row">
+<hr/>
+</div>
+
+<div class="row py-2">
+    (6,6)
+</div>
+
+<div class="row py-2">
+    <div class="col-md-3">
+        <a href="#" data-bs-toggle="tooltip" title="ninetyDayStakingRebase = ninetyDayFutureRewards / ninetyDayTVL">ninetyDayStakingRebase :</a>
+        <input type="text" id="ninetyDayStakingRebase" name="ninetyDayStakingRebase">
+    </div>
+    <div class="col-md-3">
+        <a href="#" data-bs-toggle="tooltip" title="ninetyDayStakingRebase(%)">ninetyDayRebase(%) :</a>
+        <input type="text" id="ninetyDayRebase" name="ninetyDayRebase">
+    </div>
+    <div class="col-md-3">
+        <a href="#" data-bs-toggle="tooltip" title="ninetyDayFutureRewards : token distribute amoung 90 days pool">ninetyDayFutureRewards(wsTokens) :</a>
+        <input type="text" id="ninetyDayFutureRewards" name="ninetyDayFutureRewards" value="0.149">
+    </div>
+    <div class="col-md-3">
+        <a href="#" data-bs-toggle="tooltip" title="ninetyDayTVL : tokens staked in 90 days pool">ninetyDayTVL(wsTokens) :</a>
+        <input type="text" id="ninetyDayTVL" name="ninetyDayTVL" value="194.3169">
+    </div>
+</div>
+
+
 </div>  <!-- end container -->
 
 <!-- prism js for syntax highlighter -->
