@@ -1,0 +1,47 @@
+# ICHIMOKU
+```js
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// Contributor : @exaim1 on twitter
+// Contributed version : 1
+// reference : https://www.investopedia.com/terms/i/ichimoku-cloud.asp
+```
+
+```python
+//@version=5
+indicator(title="Ichimoku Kinko Hyo", shorttitle="ichi", overlay = true)
+
+// inputs
+conversion = input(9,title="input of Conversion Line(tenkan sen), default 9 ~ 2 weeks")
+base = input(26,title="input of Base Line(kijun sen), default 26 ~ a month")
+lead = input(52,title="input of Leading Span B(Senkou span B), default 52")
+chikou = input(-26,title="Chikou span, plotted 26 periods in the past")
+displacement = input(26,title="Displacement used for leading plot, plotted 26 periods to the future")
+// shift = input(0,title="negative value shift to the past")
+
+// declare function
+// middleDonchian : https://www.investopedia.com/terms/d/donchianchannels.asp
+// nz() - return 0, if Na
+middleDonchian(period) =>
+    LC = ta.lowest(period) // series
+    UC = ta.highest(period) // series
+    math.avg(nz(UC), nz(LC))
+
+tenkanSen = middleDonchian(conversion)
+kijunSen = middleDonchian(base)
+chikouSpan = close
+senkouSpanA = math.avg(nz(tenkanSen),nz(kijunSen))
+senkouSpanB = middleDonchian(lead)
+
+// plot
+h_green = color.new(color.green,65)
+h_red = color.new(color.red,65)
+
+plot(tenkanSen, color=color.red, linewidth=2, title="tenkanSen")
+plot(kijunSen, color=color.blue, linewidth=2, title="kijunSen")
+plot(chikouSpan, color=color.teal , style=plot.style_stepline, linewidth=2 , title="chikou", offset = chikou)
+
+A = plot(senkouSpanA, color=color.green, title="senkouSpanA", offset = displacement)
+B = plot(senkouSpanB, color=color.red, title="senkouSpanB", offset = displacement)
+f_color = senkouSpanA > senkouSpanB ? h_green : h_red
+fill(A, B, color=f_color)
+```
