@@ -36,12 +36,14 @@
 <footer>
 <script>
 
-function getLink(repo,folder,subfolder){
-  // example  https://ido-aim.github.io/paper/dist/25_FEB_2022:Start/
-  let url =  `https://ido-aim.github.io/${repo}/${folder}/${subfolder}/`
-  return url
+import {getLink} from '/libs/mjs/modules.mjs'
 
-}
+// function getLink(repo,folder,subfolder){
+//   // example  https://ido-aim.github.io/paper/dist/25_FEB_2022:Start/
+//   let url =  `https://ido-aim.github.io/${repo}/${folder}/${subfolder}/`
+//   return url
+
+// }
 
 async function list_directory(user, repo, directory) {
   let url = `https://api.github.com/repos/${user}/${repo}/git/trees/main`;

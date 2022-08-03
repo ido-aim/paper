@@ -1,5 +1,5 @@
 # paper
-quick public paper with .md//html
+Quick public paper with markdown, html
 
 ## Visit full pages on 
 https://ido-aim.github.io/paper/
