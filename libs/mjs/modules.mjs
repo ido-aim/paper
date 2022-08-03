@@ -11,4 +11,14 @@ function getLink(repo,folder,subfolder){
     return url
   }
 
-export {getLink}
+async function listDir(user, repo, directory) {
+  let url = `https://api.github.com/repos/${user}/${repo}/git/trees/main`;
+  let list = await fetch(url).then(res => res.json());
+  let dir = list.tree.find(node => node.path === directory);
+  if (dir) {
+     const list = await fetch(dir.url).then(res => res.json());
+     return list.tree.map(node => node.path);
+  }
+}  
+
+export {getLink,listDir}
