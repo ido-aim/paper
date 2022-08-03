@@ -50,7 +50,10 @@ $(function() {
         // looping through response
         for(let sfolder in res){
             // create response object
-            dat.push({"Topics":res[sfolder],"Links":getLink("paper","dist",res[sfolder])})
+            let fullLink = getLink("paper","dist",res[sfolder])
+            let topicName = res[sfolder].split(":")[1]
+            let linkName = res[sfolder]
+            dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
         }
         console.log(dat)
 
@@ -59,10 +62,10 @@ $(function() {
             "data":dat,
             "columns": [
             { "data": "Topics" }, 
-            { "data": "Links",
+            { "data": "linkName",
               "render": function(data, type, row, meta){
                 if(type === 'display'){
-                 data = '<a href="' + data + '">' + data + '</a>';
+                 data = '<a href="' + row['Links'] + '">' + data + '</a>';
                }
               return data;
             } }]
