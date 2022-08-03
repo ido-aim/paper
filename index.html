@@ -42,12 +42,13 @@
 <script>
 // on page script
 // document ready
+// import getLink,listDir
 
 $(function() {
     console.log( "Doc Ready!!" );
 
-    // get all topics in lists
-    list_directory("ido-aim", "paper", "dist").then(res => {
+    // get all sub-folders in dist folder
+    listDir("ido-aim", "paper", "dist").then(res => {
         let dat = [];
         // looping through response
         for(let sfolder in res){
