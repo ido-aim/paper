@@ -19,46 +19,51 @@
 
 </header>
 <body>
-
-<div w3-include-html="./header.html"></div>
-
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6"> 
-        <!-- img  -->
-        </div>
-        <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Aim's Papers</h1>
-        <p class="lead">Public knowledge worth sharing :)</p>
-        </div>
-    </div> <!-- end row -->
-</div> <!-- end container -->
-
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
-    <div class="row">
-    <table id="datatable" class="dispaly cell-border compact stripe">
-        <thead>
-            <tr>
-                <th>Topics</th>
-                <th>Links</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    </div> <!-- end row -->
-</div> <!-- end container -->
+    <div data-include="header"></div>
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6"> 
+                <!-- img  -->
+                </div>
+                <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Aim's Papers</h1>
+                <p class="lead">Public knowledge worth sharing :)</p>
+                </div>
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+        
+        <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="row">
+            <table id="datatable" class="dispaly cell-border compact stripe">
+                <thead>
+                    <tr>
+                        <th>Topics</th>
+                        <th>Links</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            </div> <!-- end row -->
+        </div> <!-- end container -->
 
 </body>
 
 <footer>
 
 <script type="module">
-// on page script
 // document ready
 import {getLink,listDir} from './libs/mjs/modules.mjs'
 
 $(function() {
+    // load components
+    var includes = $('[data-include]')
+    $.each(includes, function () {
+        var file = './'+$(this).data('include') + '.html'
+        console.log(file)
+        $(this).load(file)
+    })
+
     console.log( "Doc Ready!!" );
 
     // get all sub-folders in dist folder
