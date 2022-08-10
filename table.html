@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row">
+        <div id="tableContent"></div>
+    </div> <!-- end row -->
+</div> <!-- end container -->
+
+<script type="module">
+import {getLink,listDir} from './libs/mjs/modules.mjs'
+// get all sub-folders in dist folder
+listDir("ido-aim", "paper", "dist").then(res => {
+    let dat = [];
+    // looping through response
+    for(let sfolder in res){
+        // create response object
+        let fullLink = getLink("paper","dist",res[sfolder])
+        let topicName = res[sfolder].split(":")[1]
+        let linkName = res[sfolder]
+        dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
+    }
+    console.log(dat)
+
+    // init grid.js
+    const grid = new Grid({
+    columns: ['Name', 'Email', 'Phone Number'],
+    data: [
+        ['John', 'john@example.com', '(353) 01 222 3333'],
+        ['Mark', 'mark@gmail.com',   '(01) 22 888 4444']
+    ]
+    });
+    </script>
