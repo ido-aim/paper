@@ -9,6 +9,7 @@
 
 <script type="module">
 import {getLink,listDir} from './libs/mjs/modules.mjs'
+
 // load external css
 let cssUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css"
 $.get(cssUrl , function(){                    
@@ -20,7 +21,8 @@ $.get(jsUrl , function(){
     $('<script>', {type:'text/javascript', 'src':jsUrl}).appendTo('header');
 });
 
-
+// execute
+// module.mjs
 listDir("ido-aim", "paper", "dist").then(res => {
     let dat = [];
     // looping through response
@@ -33,7 +35,8 @@ listDir("ido-aim", "paper", "dist").then(res => {
     }
     console.log(dat)
 })
-//     // init grid.js
+// init grid.js
+
 //     new gridjs.Grid({
 //     columns: ['Name', 'Email', 'Phone Number'],
 //     data: [
