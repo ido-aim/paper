@@ -37,10 +37,10 @@ $(function() {
         let scriptLoad = 'script'
         console.log(fileName)
         // load template
-        $(this).load(`fileName ${sectLoad}`)
+        $(this).load(`${fileName} ${sectLoad}`)
 
         //load script, then execute
-        $(this).load(`fileName ${scriptLoad}`,componentExe)
+        $(this).load(`${fileName} ${scriptLoad}`,componentExe)
 
     })
 
