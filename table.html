@@ -1,8 +1,4 @@
 <!-- load then execute -->
-
-<script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
-
 <div id="template">
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row">
@@ -11,11 +7,19 @@
 </div> <!-- end container -->
 </div> <!-- end template -->
 
-
 <script type="module">
-console.log('echo table.html: going into module')
 import {getLink,listDir} from './libs/mjs/modules.mjs'
-// get all sub-folders in dist folder
+// load external css
+let cssUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css"
+$.get(cssUrl , function(){                    
+    $('<link>', {rel:'stylesheet', type:'text/css', 'href':cssUrl}).appendTo('header');
+});
+// load external js
+let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
+$.get(jsUrl , function(){                    
+    $('<script>', {type:'text/javascript', 'src':jsUrl}).appendTo('header');
+});
+
 
 listDir("ido-aim", "paper", "dist").then(res => {
     let dat = [];
