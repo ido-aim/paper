@@ -36,7 +36,7 @@ $(function() {
     $.each(includes, function () {
         let fileName = `./${$(this).data('include')}.html`
         let templateLoad = '#template'
-        let scriptLoad = 'script'
+        let scriptLoad = '#export'
         console.log(fileName)
         // load template
         $(this).load(`${fileName} ${templateLoad}`)
