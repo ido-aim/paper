@@ -18,7 +18,7 @@
 <body>
     <!-- <div data-include="header"></div> -->
     <div data-include="hero"></div>
-    <!-- <div data-include="table"></div>     -->
+    <div data-include="table"></div>    
 </body>
 
 <aside></aside>
@@ -40,9 +40,6 @@ $(function() {
         console.log(fileName)
         // zepto load template then execute script inside if no selector
         $(this).load(`${fileName}`)
-        //load script, then execute
-        // $('aside').load(`${fileName} ${scriptLoad}`,componentExe)
-
     })
 
     console.log( "Doc Ready!!" );

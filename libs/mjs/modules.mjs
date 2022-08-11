@@ -5,9 +5,6 @@
 // getlink : fetch github links
 const root = "https://ido-aim.github.io/"
 
-// component load function
-// function componentLoad(f,section,execute)
-
 function getLink(repo,folder,subfolder){
     // example  https://ido-aim.github.io/paper/dist/25_FEB_2022:Start/
     let url =  `${root}${repo}/${folder}/${subfolder}/`
