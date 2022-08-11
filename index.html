@@ -21,6 +21,8 @@
     <div data-include="table"></div>    
 </body>
 
+<aside></aside>
+
 <footer>
 <script>
 function componentExe(responseTxt, statusTxt, xhr){
@@ -40,7 +42,7 @@ $(function() {
         $(this).load(`${fileName} ${sectLoad}`)
 
         //load script, then execute
-        $(this).load(`${fileName} ${scriptLoad}`,componentExe)
+        $('aside').load(`${fileName} ${scriptLoad}`,componentExe)
 
     })
 
