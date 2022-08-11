@@ -35,12 +35,11 @@ $(function() {
     let includes = $('[data-include]')
     $.each(includes, function () {
         let fileName = `./${$(this).data('include')}.html`
-        let templateLoad = 'template'
+        let templateLoad = '#template'
         let scriptLoad = 'script'
         console.log(fileName)
         // load template
         $(this).load(`${fileName} ${templateLoad}`)
-
         //load script, then execute
         $('aside').load(`${fileName} ${scriptLoad}`,componentExe)
 
