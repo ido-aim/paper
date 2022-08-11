@@ -18,7 +18,7 @@
 <body>
     <!-- <div data-include="header"></div> -->
     <div data-include="hero"></div>
-    <div data-include="table"></div>    
+    <!-- <div data-include="table"></div>     -->
 </body>
 
 <aside></aside>
@@ -38,10 +38,10 @@ $(function() {
         let templateLoad = '#template'
         let scriptLoad = '#export'
         console.log(fileName)
-        // load template
-        $(this).load(`${fileName} ${templateLoad}`)
+        // zepto load template then execute script inside if no selector
+        $(this).load(`${fileName}`)
         //load script, then execute
-        $('aside').load(`${fileName} ${scriptLoad}`,componentExe)
+        // $('aside').load(`${fileName} ${scriptLoad}`,componentExe)
 
     })
 
