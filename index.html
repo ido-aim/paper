@@ -23,17 +23,29 @@
 
 <footer>
 <script>
+function componentExe(s){
+    console.log(s)
+}
 
 $(function() {
     // load components using ZeptoAjax
     let includes = $('[data-include]')
     $.each(includes, function () {
-        var fileName = `./${$(this).data('include')}.html`
+        let fileName = `./${$(this).data('include')}.html`
+        let sectLoad = 'template'
+        let scriptLoad = 'script'
         console.log(fileName)
-        $(this).load(fileName)
+        // load template
+        $(this).load(`fileName ${sectLoad}`)
+
+        //load script, then execute
+        $(this).load(`fileName ${scriptLoad}`,componentExe)
+
     })
 
     console.log( "Doc Ready!!" );
+
+    // execute js components
 });
 
 </script>
