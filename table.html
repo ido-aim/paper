@@ -36,16 +36,6 @@ async function listDir(user, repo, directory) {
   }
 }  
 
-// extend zepto
-$.fn.loadScript = function (url, callback) {
-    $.ajax({
-        url: url,
-        dataType: 'script',
-        success: callback,
-        async: true
-    });
-}
-
 // execute
 // module.mjs
 listDir("ido-aim", "paper", "dist").then(res => {
@@ -66,7 +56,7 @@ listDir("ido-aim", "paper", "dist").then(res => {
 // load external grid.js
 let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 
-$.loadscript(jsUrl,function(){
+$.get(jsUrl,function(){
     new gridjs.Grid({
     columns: ['Name', 'Email', 'Phone Number'],
     data: [
