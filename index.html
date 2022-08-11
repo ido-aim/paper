@@ -23,8 +23,9 @@
 
 <footer>
 <script>
-function componentExe(s){
-    console.log(s)
+function componentExe(responseTxt, statusTxt, xhr){
+    if(statusTxt == "success") console.log(responseTxt)
+    else if(statusTxt == "error") alert("Error: " + xhr.status + ": " + xhr.statusText);
 }
 
 $(function() {
