@@ -64,7 +64,7 @@ $.get(jsUrl,function(){
             const dir = col.direction === 1 ? 'asc' : 'desc';
             let colName = ['linkName'][col.index];
         
-            return `order=${colName}&dir=${dir}`;
+            return `${prev}&order=${colName}&dir=${dir}`;
             }
         }
     },
