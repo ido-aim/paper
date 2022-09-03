@@ -55,7 +55,12 @@ $.get(jsUrl,function(){
     ],
     search: true,
     sort: true,
-    data: _dat
+    data: _dat,
+    style: {
+        table: {width:100%},
+        th: {},
+        td: {}
+    }
     }).render(document.getElementById("tableContent"));
 })
 } // end function
