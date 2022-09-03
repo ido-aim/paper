@@ -44,13 +44,13 @@ let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 $.get(jsUrl,function(){
     new gridjs.Grid({
     columns: [
-    {id:'Topics',name:'Topics',formatter: (cell) => html(`<b>${cell}</b>`)},
+    {id:'Topics',name:'Topics',formatter: (cell) => gridjs.html(`<b>${cell}</b>`)},
     { 
     id: 'Links',   
     name: 'Links',
     hidden: true
     },
-    {id:'linkName',name:'linkName',formatter: (_, row) => html(`<a href='${row.cells[1].data}'>${row.cells[2].data}</a>`)}
+    {id:'linkName',name:'linkName',formatter: (_, row) => gridjs.html(`<a href='${row.cells[1].data}'>${row.cells[2].data}</a>`)}
     ],
     search: true,
     sort: true,
