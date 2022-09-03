@@ -54,7 +54,20 @@ $.get(jsUrl,function(){
     {id:'linkName',name:'linkName',formatter: (_, row) => gridjs.html(`<a href='${row.cells[1].data}'>${row.cells[2].data}</a>`)}
     ],
     search: true,
-    sort: true,
+    sort: {
+        multiColumn: false,
+        server: {
+            url: (prev, columns) => {
+            if (!columns.length) return prev;
+        
+            const col = columns[2];
+            const dir = col.direction === 1 ? 'asc' : 'desc';
+            let colName = ['linkName'][col.index];
+        
+            return `order=${colName}&dir=${dir}`;
+            }
+        }
+    },
     data: _dat,
     style: {
         table: {'width':'100%'},
