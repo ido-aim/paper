@@ -70,8 +70,6 @@ listDir("ido-aim", "paper", "dist").then(res => {
         let fullLink = getLink("paper","dist",res[sfolder])
         let topicName = res[sfolder].split(":")[1]
         let linkName = res[sfolder]
-        // gridjs format
-        let pair = [topicName,]
         dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
     }
     console.log(dat)
