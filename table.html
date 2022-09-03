@@ -37,6 +37,7 @@ async function listDir(user, repo, directory) {
 }  
 
 function gentable(_dat){
+// [{...},{...}]
 // using init grid.js    
 // load external grid.js
 let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
@@ -70,10 +71,11 @@ listDir("ido-aim", "paper", "dist").then(res => {
         let linkName = res[sfolder]
         dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
     }
-    console.log(dat)
     return dat
     }).finally((dat) => {
-        gentable(dat)
+        console.log(dat)
+        let test = [{"Topics":'lol',"Links":'#',"linkName":'linkName'}]
+        gentable(test)
     })
 
 </script>
