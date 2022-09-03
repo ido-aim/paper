@@ -72,7 +72,8 @@ listDir("ido-aim", "paper", "dist").then(res => {
         dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
     }
     return dat
-    }).finally((dat) => {
+    }).then((dat) => {
+        // why undefined
         console.log(dat)
         let test = [{"Topics":'lol',"Links":'#',"linkName":'linkName'}]
         gentable(test)
