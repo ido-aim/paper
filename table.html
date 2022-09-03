@@ -7,9 +7,9 @@
 </div> <!-- end container -->
 </div> <!-- end template -->
 
-<script>
-// import {getLink,listDir} from './libs/mjs/modules.mjs'
 
+
+<script>
 // external var
 const root = "https://ido-aim.github.io/"
 
@@ -36,8 +36,32 @@ async function listDir(user, repo, directory) {
   }
 }  
 
+function gentable(_dat){
+// using init grid.js    
+// load external grid.js
+let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
+
+$.get(jsUrl,function(){
+    new gridjs.Grid({
+    columns: [
+    {id:'Topics',name:'Topics',formatter: (cell) => html(`<b>${cell}</b>`)},
+    { 
+    id: 'Links',   
+    name: 'Links',
+    hidden: true
+    },
+    {id:'linkName',name:'linkName',formatter: (_, row) => html(`<a href='${row.cells[1].data}'>${row.cells[2].data}</a>`)}
+    ],
+    search: true,
+    sort: true,
+    data: [
+        _dat
+    ]
+    }).render(document.getElementById("tableContent"));
+})
+} // end function
+
 // execute
-// module.mjs
 listDir("ido-aim", "paper", "dist").then(res => {
     let dat = [];
     // looping through response
@@ -46,23 +70,12 @@ listDir("ido-aim", "paper", "dist").then(res => {
         let fullLink = getLink("paper","dist",res[sfolder])
         let topicName = res[sfolder].split(":")[1]
         let linkName = res[sfolder]
+        // gridjs format
+        let pair = [topicName,]
         dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
     }
-    console.log(dat)
+    // console.log(dat)
+    gentable(dat)
 })
-// init grid.js
-// grid.js not defined, lol
 
-// load external grid.js
-let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
-
-$.get(jsUrl,function(){
-    new gridjs.Grid({
-    columns: ['Name', 'Email', 'Phone Number'],
-    data: [
-        ['John', 'john@example.com', '(353) 01 222 3333'],
-        ['Mark', 'mark@gmail.com',   '(01) 22 888 4444']
-    ]
-    }).render(document.getElementById("tableContent"));
-})
 </script>
