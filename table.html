@@ -74,8 +74,11 @@ listDir("ido-aim", "paper", "dist").then(res => {
         let pair = [topicName,]
         dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
     }
-    // console.log(dat)
-    gentable(dat)
-})
+    
+    console.log(dat)
+    return dat
+    }).finally((dat) => {
+        gentable(dat)
+    })
 
 </script>
