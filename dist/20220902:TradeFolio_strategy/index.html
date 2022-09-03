@@ -24,7 +24,7 @@
 
         function main(){
             let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-            let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+            let vh = 0.9 * Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
             let _html = `<iframe src="${url}" width="${vw}" height="${vh}" frameborder="0" scrolling="no"></iframe>`
             console.log(vw,vh)
