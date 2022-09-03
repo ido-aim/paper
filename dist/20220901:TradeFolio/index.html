@@ -7,9 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <iframe src="https://onedrive.live.com/embed?cid=7F8BEABFE91BC366&resid=7F8BEABFE91BC366%2155510&authkey=AJ9r0lMv6J3hQ3A&em=2" 
-    width="100%" height="712" frameborder="0" scrolling="no"></iframe> -->
 </body>
+
 <footer>
     <script>
         const url = "https://onedrive.live.com/embed?cid=7F8BEABFE91BC366&resid=7F8BEABFE91BC366%2155510&authkey=AJ9r0lMv6J3hQ3A&em=2"
@@ -27,6 +26,7 @@
             let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
             let _html = `<iframe src="${url}" width="${vw}" height="${vh}" frameborder="0" scrolling="no"></iframe>`
+            console.log(vw,vh)
             document.body.innerHTML = _html
         }
 
