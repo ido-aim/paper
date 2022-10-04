@@ -72,7 +72,7 @@ listDir("ido-aim", "paper", "dist").then(res => {
     for(let sfolder in res){
         // create response object
         let fullLink = getLink("paper","dist",res[sfolder])
-        let topicName = res[sfolder].split(":")[1]
+        let topicName = res[sfolder].split("…")[1]
         let linkName = res[sfolder]
         dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
     }
