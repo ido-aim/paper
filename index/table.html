@@ -75,8 +75,8 @@ listDir("ido-aim", "paper", "dist").then(res => {
         // create response object
         if(res[i] != 'nodisplay') {
             let fullLink = getLink("paper","dist",res[i]) //'20220225…Start'
-            let topicName = res[i].split("…")[1]
-            let date = res[i].split("…")[0]
+            let topicName = res[i].split("_")[1]
+            let date = res[i].split("_")[0]
             let a = {"Date":date,"Topics":topicName,"Links":fullLink}
             dat = [a, ...dat]
         }
