@@ -43,6 +43,7 @@ function gentable(_dat){
 // load external grid.js
 let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 
+// load script then execute
 $.get(jsUrl,function(){
     new gridjs.Grid({
     columns: [
@@ -69,12 +70,12 @@ $.get(jsUrl,function(){
 // execute
 listDir("ido-aim", "paper", "dist").then(res => {
     var dat = [];
-    // console.log(res) i.e. ['20220225…Start',...]
+    // console.log(res) i.e. ['20220225_Start',...]
     // looping through response
     for(let i in res){
         // create response object
         if(res[i] != 'nodisplay') {
-            let fullLink = getLink("paper","dist",res[i]) //'20220225…Start'
+            let fullLink = getLink("paper","dist",res[i]) //'20220225_Start'
             let topicName = res[i].split("_")[1]
             let date = res[i].split("_")[0]
             let a = {"Date":date,"Topics":topicName,"Links":fullLink}
