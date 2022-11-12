@@ -46,13 +46,13 @@ let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 $.get(jsUrl,function(){
     new gridjs.Grid({
     columns: [
-    {id:'Topics',name:'Topics',formatter: (cell) => gridjs.html(`<b>${cell}</b>`)},
+    {id:'Date',name:'Date',formatter: (cell) => gridjs.html(`<b>${cell}</b>`)},
     { 
     id: 'Links',   
     name: 'Links',
     hidden: true
     },
-    {id:'linkName',name:'linkName',formatter: (_, row) => gridjs.html(`<a href='${row.cells[1].data}'>${row.cells[2].data}</a>`)}
+    {id:'Topics',name:'Topics',formatter: (_, row) => gridjs.html(`<a href='${row.cells[1].data}'>${row.cells[2].data}</a>`)}
     ],
     search: true,
     sort: true,
@@ -69,20 +69,20 @@ $.get(jsUrl,function(){
 // execute
 listDir("ido-aim", "paper", "dist").then(res => {
     let dat = [];
-    console.log(res)
+    // console.log(res) i.e. ['20220225…Start',...]
     // looping through response
-    for(let sfolder in res){
+    for(let i in res){
         // create response object
-        let fullLink = getLink("paper","dist",res[sfolder])
-        let topicName = res[sfolder].split("…")[1]
-        let linkName = res[sfolder]
-        dat.push({"Topics":topicName,"Links":fullLink,"linkName":linkName})
+        if(res[i] != 'nodisplay') {
+            let fullLink = getLink("paper","dist",res[i]) //'20220225…Start'
+            let topicName = res[i].split("…")[1]
+            let date = res[i].split("…")[0]
+            dat.push({"Date":date,"Topics":topicName,"Links":fullLink})
+        }
     }
     return dat
     }).then((dat) => {
-        // why undefined
-        console.log(dat)
-        // let test = [{"Topics":'lol',"Links":'#',"linkName":'linkName'}]
+        // console.log(dat) i.e. [{"Date":date,"Topics":topicName,"Links":fullLink}]
         gentable(dat)
     })
 
