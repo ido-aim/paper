@@ -28,7 +28,7 @@ $(function() {
     // Zepto must be loaded from this header
     let includes = $('[data-include]')
     $.each(includes, function () {
-        let filePath = `index/${$(this).data('include')}.html`
+        let filePaths = `index/${$(this).data('include')}.html`
         
         // If no CSS selector is given, the complete response text is used instead.
         // Note that any JavaScript blocks found are only executed in case no selector is given.
