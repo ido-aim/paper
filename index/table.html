@@ -46,7 +46,17 @@ let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 $.get(jsUrl,function(){
     new gridjs.Grid({
     columns: [
-    {id:'Date',name:'Date',formatter: (cell) => gridjs.html(`<b>${cell}</b>`)},
+    {id:'Date',name:'Date',formatter: (cell) => gridjs.html(`<b>${cell}</b>`),
+    sort: {
+        compare: (a, b) => {
+          if (a > b) {
+            return 1;
+          } else {
+            return -1;
+          }
+        }
+      }
+    },
     { 
     id: 'Links',   
     name: 'Links',
