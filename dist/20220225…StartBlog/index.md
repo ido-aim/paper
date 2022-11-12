@@ -1,2 +1,2 @@
 # Getting start
-![Jesus](./jesus.jpeg)
+![Jesus](jesus.jpeg)
