@@ -77,9 +77,9 @@ listDir("ido-aim", "paper", "dist").then(res => {
             let fullLink = getLink("paper","dist",res[i]) //'20220225…Start'
             let topicName = res[i].split("…")[1]
             let date = res[i].split("…")[0]
-            let a = [{"Date":date,"Topics":topicName,"Links":fullLink}]
-            let b = a.push(...dat)
-            dat = b
+            dat = [{"Date":date,"Topics":topicName,"Links":fullLink}].push(...dat)
+            
+            
         }
     }
     return dat
