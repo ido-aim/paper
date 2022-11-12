@@ -78,7 +78,8 @@ listDir("ido-aim", "paper", "dist").then(res => {
             let topicName = res[i].split("…")[1]
             let date = res[i].split("…")[0]
             let a = [{"Date":date,"Topics":topicName,"Links":fullLink}]
-            dat = a.push(...dat)
+            let b = a.push(...dat)
+            dat = b
         }
     }
     return dat
