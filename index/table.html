@@ -47,12 +47,12 @@ $.get(jsUrl,function(){
     new gridjs.Grid({
     columns: [
     {id:'Date',name:'Date',formatter: (cell) => gridjs.html(`<b>${cell}</b>`),
-    sort: {
+    sort: { // descending
         compare: (a, b) => {
           if (a > b) {
-            return 1;
-          } else {
             return -1;
+          } else {
+            return 1;
           }
         }
       }
