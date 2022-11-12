@@ -46,17 +46,7 @@ let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 $.get(jsUrl,function(){
     new gridjs.Grid({
     columns: [
-    {id:'Date',name:'Date',formatter: (cell) => gridjs.html(`<b>${cell}</b>`),
-    sort: { // descending
-        compare: (a, b) => {
-          if (a > b) {
-            return -1;
-          } else {
-            return 1;
-          }
-        }
-      }
-    },
+    {id:'Date',name:'Date',formatter: (cell) => gridjs.html(`<b>${cell}</b>`)},
     { 
     id: 'Links',   
     name: 'Links',
@@ -78,7 +68,7 @@ $.get(jsUrl,function(){
 
 // execute
 listDir("ido-aim", "paper", "dist").then(res => {
-    let dat = [];
+    var dat = [];
     // console.log(res) i.e. ['20220225…Start',...]
     // looping through response
     for(let i in res){
@@ -87,7 +77,8 @@ listDir("ido-aim", "paper", "dist").then(res => {
             let fullLink = getLink("paper","dist",res[i]) //'20220225…Start'
             let topicName = res[i].split("…")[1]
             let date = res[i].split("…")[0]
-            dat.push({"Date":date,"Topics":topicName,"Links":fullLink})
+            let a = [{"Date":date,"Topics":topicName,"Links":fullLink}]
+            dat = a.push(...dat)
         }
     }
     return dat
