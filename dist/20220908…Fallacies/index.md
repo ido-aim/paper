@@ -1,16 +1,25 @@
 # Fallacies
 
-## Ad Hominem - Mudslinging
+> - Things don't change
+> - Confuse cause and effect
+> - Confuse number or percantage
+> - Vague language
+> - Not all X are alike
+> - Survey does not reflect all populations
+
+
+## <img width="32px" height="32px" src="AdHominem.png"/> Ad Hominem - Mudslinging 
+
 _Attack on the person making the claim, not the claim itself_
 
 **why it is invalid** : politicians can use them to manipulate voters' opinions against an opponent without addressing core issues.
 
 Examples
 
-[personal attacked](https://thebestschools.org/magazine/15-logical-fallacies-know/#ad-hominem)
+[Personal attacked](https://thebestschools.org/magazine/15-logical-fallacies-know/#ad-hominem)
 > MacDougal roots for a British football team. Clearly he's unfit to be a police chief in Ireland
 
-[dig dirt](https://yourlogicalfallacyis.com/ad-hominem)
+[Dig dirt](https://yourlogicalfallacyis.com/ad-hominem)
 > After Sally presents an eloquent and compelling case for a more equitable taxation system, Sam asks the audience whether we should believe anything from a woman who isn't married, was once arrested, and smells a bit weird.
 
 ---
@@ -44,7 +53,7 @@ Examples
 
 ---
 
-## Post Hoc - Myth
+## Post Hoc - Myth, A causes B
 _if B occurs after A, then A causes B_
 
 **why it is invalid** : It might be a coincidence. Without proper explanation, people will believe it.

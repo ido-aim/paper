@@ -23,26 +23,19 @@
 
 <footer>
 <script>
-function componentExe(responseTxt, statusTxt, xhr){
-    if(statusTxt == "success") console.log(responseTxt)
-    else if(statusTxt == "error") alert("Error: " + xhr.status + ": " + xhr.statusText);
-}
-
 $(function() {
-    // load components using ZeptoAjax
+    // load components using Zepto
+    // Zepto must be loaded from this header
     let includes = $('[data-include]')
     $.each(includes, function () {
-        let fileName = `./${$(this).data('include')}.html`
-        let templateLoad = '#template'
-        let scriptLoad = '#export'
-        // console.log(fileName)
-        // zepto load template then execute script inside if no selector
-        $(this).load(`${fileName}`)
+        let filePath = `index/${$(this).data('include')}.html`
+        
+        // If no CSS selector is given, the complete response text is used instead.
+        // Note that any JavaScript blocks found are only executed in case no selector is given.
+        $(this).load(`${filePaths}`)
     })
-
     console.log( "Doc Ready!!" );
-
-    // execute js components
+    // execute other js components
 });
 
 </script>

@@ -10,10 +10,11 @@
 
 
 <script>
-// external var
+// declare external var
 const root = "https://ido-aim.github.io/"
 
 // load external css
+// then append to header tag
 let cssUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css"
 $.get(cssUrl , function(){                    
     $('<link>', {rel:'stylesheet', type:'text/css', 'href':cssUrl}).appendTo('header');
@@ -38,7 +39,7 @@ async function listDir(user, repo, directory) {
 
 function gentable(_dat){
 // [{...},{...}]
-// using init grid.js    
+// ref : https://gridjs.io/docs/config/data
 // load external grid.js
 let jsUrl = "https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"
 
@@ -68,6 +69,7 @@ $.get(jsUrl,function(){
 // execute
 listDir("ido-aim", "paper", "dist").then(res => {
     let dat = [];
+    console.log(res)
     // looping through response
     for(let sfolder in res){
         // create response object
