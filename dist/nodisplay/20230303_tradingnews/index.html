@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradefolio-strategy</title>
+</head>
+<body>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/economic-calendar/" rel="noopener" target="_blank"><span class="blue-text">Economic calendar</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+    {
+    "width": `${Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)}`,
+    "height": `${0.8 * Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)}`,
+    "colorTheme": "light",
+    "isTransparent": false,
+    "locale": "en",
+    "importanceFilter": "-1,0,1",
+    "currencyFilter": "AUD,USD,CAD,EUR,FRF,DEM,ITL,JPY,NZD,ESP,CHF,GBP"
+    }
+    </script>
+    </div>
+    <!-- TradingView Widget END -->
+</body>
+</html>
